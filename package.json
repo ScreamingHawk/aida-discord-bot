@@ -6,6 +6,7 @@
     "private": true,
     "dependencies": {
         "axios": "^0.27.2",
+        "openai": "^3.1.0",
         "tweetnacl": "^1.0.3",
         "yaml": "^2.1.1"
     },
@@ -15,6 +16,6 @@
         "yaml-cfn": "^0.3.1"
     },
     "scripts": {
-        "test": "jest"
+        "test": "jest __tests__"
     }
 }

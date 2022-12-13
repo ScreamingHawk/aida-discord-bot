@@ -61,7 +61,7 @@ sam build && sam deploy --guided
 
 ## Add your own function
 
-1. Create a new command in `src/modules/example/another-one.js` similar to `hello-from-lambda.js`. It must have another name within the `exports.data`.
+1. Create a new command in `src/modules/example/another-one.js` similar to `chat.js`. It must have another name within the `exports.data`.
 2. Generate template, register commands, build and deploy using:
 
 ```
