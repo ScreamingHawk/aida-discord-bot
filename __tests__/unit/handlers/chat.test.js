@@ -4,9 +4,9 @@ const lambda = require('../../../src/modules/commands/chat');
 describe('Test for chat', function () {
 
     it('Verifies successful response', async () => {
-        const result = await lambda.action()
+        const result = await lambda.action({data: {options: [{name:"text", value: "Respond with 'This is a test'"}]}})
         const { content } = result
         console.log(content)
-        expect(content).toMatch(/(hello|hi)/i)
+        expect(content).toMatch(/This is a test/)
     });
 });

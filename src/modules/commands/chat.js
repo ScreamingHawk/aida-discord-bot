@@ -13,18 +13,31 @@ const openai = new OpenAIApi(configuration);
 exports.data = {
   name: 'chat',
   type: 1,
-  description: 'Chat with Aida.'
+  description: 'Chat with Aida.',
+  options: [
+    {
+      name: 'text',
+      description: 'The text to send to Aida.',
+      required: true,
+      type: 3,
+    },
+  ],
 }
 
 exports.action = async (body) => {
+  const { value } = body.data.options.find(o => o.name === "text")
+  
   // May do something here with body
   // Body contains Discord command details
   const completion = await openai.createCompletion({
     model: "text-curie-001",
-    prompt: "Hello world",
+    prompt: value,
+    user: body.member?.user?.id,
+    stop: '.',
+    max_tokens: 64,
   });
   let response = {
-    "content": completion.data.choices[0].text
+    "content": `> ${value}\n${completion.data.choices[0].text}`
   }
   return response
 }

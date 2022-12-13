@@ -38,7 +38,7 @@ exports.handler = async (event) => {
 
   // Handle command (send to SNS and split to one of Lambdas)
   if (body.data.name) {
-    var eventText = JSON.stringify(body, null, 2);
+    var eventText = JSON.stringify(body);
     var params = {
         Message: eventText,
         Subject: "Test SNS From Lambda",
