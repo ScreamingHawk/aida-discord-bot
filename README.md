@@ -1,7 +1,6 @@
 # Aida Discord Chatbot
 
-This implementation is an extension of the code here:
-https://betterprogramming.pub/serverless-discord-bot-on-aws-in-5-steps-956dca04d899
+A discord integrated chatbot.
 
 ## Introduction
 
@@ -88,6 +87,12 @@ This project contains source code and supporting files for a serverless applicat
 Resources for this project are defined in the `template.yaml` file in this project. The file has its own template generator. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
 ## Resources
+
+This implementation is an extension of the code here:
+https://betterprogramming.pub/serverless-discord-bot-on-aws-in-5-steps-956dca04d899
+https://github.com/jakjus/serverless-discord-bot
+
+At the time of use, this reference did not contain a LICENSE.
 
 For an introduction to the AWS SAM specification, the AWS SAM CLI, and serverless application concepts, see the [AWS SAM Developer Guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html).
 
