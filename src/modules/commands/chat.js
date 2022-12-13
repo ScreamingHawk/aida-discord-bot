@@ -30,7 +30,8 @@ exports.action = async (body) => {
   // May do something here with body
   // Body contains Discord command details
   const completion = await openai.createCompletion({
-    model: "text-curie-001",
+    // model: "text-curie-001",
+    model: "text-davinci-003",
     prompt: value,
     user: body.member?.user?.id,
     stop: '.',
