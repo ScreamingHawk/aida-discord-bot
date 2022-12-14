@@ -8,7 +8,7 @@ exports.templateResource = (module, command, name, openaiApiKey) => {
         "x86_64"
       ],
       "MemorySize": 128,
-      "Timeout": 100,
+      "Timeout": 10,
       "Policies": [
         "AWSLambdaBasicExecutionRole"
       ],
@@ -31,7 +31,11 @@ exports.templateResource = (module, command, name, openaiApiKey) => {
         "Variables": {
           "OPENAI_API_KEY": openaiApiKey,
         }
-      }
+      },
+      "DeadLetterQueue": {
+        "Type": "SQS",
+        "TargetArn": {"Fn::GetAtt": ["DeadLetterQueue.Arn"]},
+      },
     }
   }
 }

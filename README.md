@@ -6,8 +6,13 @@ A discord integrated chatbot.
 
 Aika is a chatbot built in Discord. Aika responds to Discord interactions.
 
-Discord application sends all events to one endpoint URL. 
+Discord application sends all events to one endpoint URL.
 Our architecture prevents Discord Serverless Bot from becoming a Lambda Monolith.
+
+When a message is received, a lambda is run which publishes it to the SNS topic. This lambda responds to Discord with "loading".
+Command lambdas listen for events on the SNS topic and run accordingly.
+In the event of an error, the message is added to an SQS dead letter queue.
+A lambda listens to events on this SQS DLQ and updates Discord with "error".
 
 ## Run it
 

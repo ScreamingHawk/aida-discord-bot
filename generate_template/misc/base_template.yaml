@@ -15,6 +15,9 @@ Resources:
   MainSNSTopic:
     Type: AWS::SNS::Topic
 
+  DeadLetterQueue:
+    Type: AWS::SQS::Queue
+
   proxyGateway:
     Type: AWS::Serverless::Api
     Properties:
@@ -31,8 +34,8 @@ Resources:
       Architectures:
         - x86_64
       MemorySize: 128
-      Timeout: 100
-      Description: A Lambda function that returns a static string.
+      Timeout: 5
+      Description: Proxies Discord requests to SNS queue.
       Policies:
         - AWSLambdaBasicExecutionRole
         - SNSPublishMessagePolicy:
@@ -48,6 +51,25 @@ Resources:
       Environment:
         Variables:
           TOPIC_ARN: !Ref MainSNSTopic
+
+  deadLetterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/modules/deadletter-function.handler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 5
+      Description: Manages messages in the dead letter queue.
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        SqsEvent:
+          Type: SQS
+          Properties:
+            BatchSize: 10
+            Queue: !GetAtt DeadLetterQueue.Arn
 
 Outputs:
   ProxyGWEndpoint:
