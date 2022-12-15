@@ -12,6 +12,7 @@ exports.data = {
 
 const HELP_DOC = {
   chat: 'Chat with Aida!\nYou can type your questions or statements, and Aida will respond with answers. Aida is designed to simulate human conversation, and can be a helpful way to get information or complete tasks.',
+  tweet: 'Ask Aida to write a Tweet for you!\nAida will craft a good tweet that is catchy and grabs attention, has compelling content that is relevant to your audience, and is both informative and fun.\n**This is a Premium feature!**',
 }
 
 exports.action = async () => {
