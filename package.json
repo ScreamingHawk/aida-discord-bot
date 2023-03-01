@@ -16,6 +16,7 @@
         "yaml-cfn": "^0.3.1"
     },
     "scripts": {
+        "register": "node register_commands/register.js",
         "test": "jest"
     }
 }
