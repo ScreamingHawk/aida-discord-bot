@@ -26,7 +26,7 @@ Prerequisites:
 Install required packages
 
 ```
-npm install
+yarn
 ```
 
 We are templating the main `template.yaml` file with `generate_template/generate.js`, so it's not in the main folder by default.
