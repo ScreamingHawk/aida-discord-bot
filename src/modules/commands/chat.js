@@ -29,16 +29,18 @@ exports.action = async (body) => {
   
   // May do something here with body
   // Body contains Discord command details
-  const completion = await openai.createCompletion({
-    // model: "text-curie-001",
-    model: "text-davinci-003",
-    prompt: value,
+  const completion = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        "role": "user",
+        "content": value,
+      }
+    ],
     user: body.member?.user?.id,
-    stop: '.',
-    max_tokens: 64,
   });
   let response = {
-    "content": `> ${value}\n${completion.data.choices[0].text}`
+    "content": `> ${value}\n${completion.data.choices[0].message.content}`
   }
   return response
 }

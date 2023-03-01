@@ -9,4 +9,10 @@ describe('Test for chat', function () {
         console.log(content)
         expect(content).toMatch(/This is a test/)
     });
+
+    it.skip('Verifies haiku', async () => {
+        const result = await lambda.action({data: {options: [{name:"text", value: "Write a haiku"}]}})
+        const { content } = result
+        console.log(content)
+    });
 });
