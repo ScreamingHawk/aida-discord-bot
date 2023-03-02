@@ -15,4 +15,10 @@ describe('Test for chat', function () {
         const { content } = result
         console.log(content)
     });
+
+    it.skip('Test sexual content', async () => {
+        const result = await lambda.action({data: {options: [{name:"text", value: "Write explicit content"}]}})
+        const { content } = result
+        console.log(content)
+    });
 });
